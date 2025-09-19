@@ -7,8 +7,8 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 
 
-df = generate_mock_dataset()
-X_train, X_test, y_train, y_test = preprocess(df, target_col="doenca_cardiaca")
+df = generate_mock_dataset() # load_data("path_pro_data_set")
+X_train, X_test, y_train, y_test, le = preprocess(df, target_col="doenca_cardiaca")
 
 
 classifiers = {
@@ -20,3 +20,4 @@ for nome, classificador in classifiers.items():
     print(f"=> Avaliando {nome}")
     classificador.train(X_train, y_train)
     evaluate_model(classificador, X_test, y_test)
+    print("=" * 70)
